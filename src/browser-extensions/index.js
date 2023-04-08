@@ -1,21 +1,21 @@
-import pdfmakeBase from '../base';
-import OutputDocumentBrowser from './OutputDocumentBrowser';
-import URLBrowserResolver from './URLBrowserResolver';
-import fs from 'fs';
-import configurator from 'core-js/configurator';
+import pdfmakeBase from "../base";
+import OutputDocumentBrowser from "./OutputDocumentBrowser";
+import URLBrowserResolver from "./URLBrowserResolver";
+import fs from "fs";
+import configurator from "core-js/configurator";
 
 // core-js: Polyfills will be used only if natives completely unavailable.
 configurator({
-  useNative: ['Promise']
+	useNative: ["Promise"],
 });
 
 let defaultClientFonts = {
 	Roboto: {
-		normal: 'Roboto-Regular.ttf',
-		bold: 'Roboto-Medium.ttf',
-		italics: 'Roboto-Italic.ttf',
-		bolditalics: 'Roboto-MediumItalic.ttf'
-	}
+		normal: "Roboto-Regular.ttf",
+		bold: "Roboto-Medium.ttf",
+		italics: "Roboto-Italic.ttf",
+		bolditalics: "Roboto-MediumItalic.ttf",
+	},
 };
 
 class pdfmake extends pdfmakeBase {
@@ -35,12 +35,12 @@ class pdfmake extends pdfmakeBase {
 			if (vfs.hasOwnProperty(key)) {
 				let data;
 				let encoding;
-				if (typeof vfs[key] === 'object') {
+				if (typeof vfs[key] === "object") {
 					data = vfs[key].data;
-					encoding = vfs[key].encoding || 'base64';
+					encoding = vfs[key].encoding || "base64";
 				} else {
 					data = vfs[key];
-					encoding = 'base64';
+					encoding = "base64";
 				}
 				fs.writeFileSync(key, data, encoding);
 			}
